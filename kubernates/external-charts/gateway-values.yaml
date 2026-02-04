@@ -1,0 +1,42 @@
+labels:
+  istio: ingressgateway
+  app: istio-ingressgateway
+
+service:
+  type: LoadBalancer
+
+autoscaleEnabled: true
+autoscaleMin: 1
+autoscaleMax: 3
+
+
+# gateways:
+#   istio-ingressgateway:
+#     labels:
+#       istio: ingressgateway
+#       app: istio-ingressgateway
+
+#     service:
+#       type: LoadBalancer
+#       ports:
+#         - name: status-port
+#           port: 15021
+#           targetPort: 15021
+#         - name: http2
+#           port: 80
+#           targetPort: 8080
+#         - name: https
+#           port: 443
+#           targetPort: 8443
+
+#     autoscaleEnabled: true
+#     autoscaleMin: 1
+#     autoscaleMax: 3
+
+#     resources:
+#       requests:
+#         cpu: 100m
+#         memory: 128Mi
+#       limits:
+#         cpu: 1000m
+#         memory: 1024Mi

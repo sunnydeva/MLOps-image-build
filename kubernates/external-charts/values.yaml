@@ -1,0 +1,67 @@
+# =========================================================
+# CERT-MANAGER
+# =========================================================
+cert-manager:
+  installCRDs: true
+
+  global:
+    leaderElection:
+      namespace: cert-manager
+
+  webhook:
+    timeoutSeconds: 30
+
+
+# =========================================================
+# ISTIO BASE (CRDs)
+# =========================================================
+istio-base:
+  defaultRevision: default
+
+
+# =========================================================
+# ISTIOD (CONTROL PLANE)
+# =========================================================
+istiod:
+  pilot:
+    autoscaleEnabled: true
+    autoscaleMin: 1
+    autoscaleMax: 3
+
+  meshConfig:
+    accessLogFile: /dev/stdout
+    enableTracing: true
+
+  global:
+    proxy:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 500m
+          memory: 512Mi
+
+# =========================================================
+# KSERVE
+# =========================================================
+kserve:
+  deploymentMode: RawDeployment
+
+  controller:
+    replicas: 1
+
+    gateway:
+      ingressGateway:
+        enabled: true
+        gatewayService: istio-ingressgateway
+        gatewayNamespace: istio-system
+
+  inferenceService:
+    ingress:
+      enabled: true
+      ingressClassName: istio
+
+  storage:
+    local:
+      enabled: true

@@ -1,0 +1,40 @@
+helmDefaults:
+  wait: true
+  timeout: 600
+  atomic: false
+
+releases:
+  - name: cert-manager
+    namespace: cert-manager
+    createNamespace: true
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/cert-manager-v1.14.4.tgz
+    values:
+      - installCRDs: true
+
+  - name: istio-base
+    namespace: istio-system
+    createNamespace: true
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/base-1.21.0.tgz
+    needs:
+      - cert-manager/cert-manager
+    atomic: false
+
+  - name: istiod
+    namespace: istio-system
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/istiod-1.21.0.tgz
+    needs:
+      - istio-system/istio-base
+
+  - name: istio-ingressgateway
+    namespace: istio-system
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/gateway-1.21.0.tgz
+    needs:
+      - istio-system/istiod
+    atomic: false
+
+  - name: kserve
+    namespace: kserve
+    createNamespace: true
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/kserve-v0.12.1.tgz
+    needs:
+      - istio-system/istio-ingressgateway

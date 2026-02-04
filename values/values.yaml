@@ -1,0 +1,9 @@
+controller:
+  service:
+    type: NodePort
+    nodePorts:
+      http: 31080
+      https: 31443
+
+admissionWebhooks:
+  enabled: true

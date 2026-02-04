@@ -1,0 +1,33 @@
+ingress-nginx:
+  controller:
+    replicaCount: 1
+
+    ingressClassResource:
+      name: nginx
+      enabled: true
+      default: true
+
+    ingressClass: nginx
+
+    service:
+      type: NodePort
+
+    admissionWebhooks:
+      enabled: true
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 300m
+        memory: 256Mi
+
+    nodeSelector:
+      kubernetes.io/os: linux
+
+    tolerations: []
+    affinity: {}
+
+  defaultBackend:
+    enabled: false
