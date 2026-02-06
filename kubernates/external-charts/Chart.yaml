@@ -26,8 +26,14 @@ dependencies:
     dependsOn:
       - istiod
 
-  - name: kserve
-    version: 0.12.0
-    repository: "file://charts/kserve-v0.12.0.tgz"
+  - name: kserve-crd
+    version: 0.13.0
+    repository: "file://charts/kserve-crd-0.13.0.tgz"
     dependsOn:
       - istio-gateway
+
+  - name: kserve-controller
+    version: 0.13.0
+    repository: "file://charts/kserve-0.13.0.tgz"
+    dependsOn:
+      - kserve-crd

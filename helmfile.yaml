@@ -1,6 +1,6 @@
 helmDefaults:
   wait: true
-  timeout: 600
+  timeout: 800
   atomic: false
 
 releases:
@@ -31,6 +31,7 @@ releases:
     needs:
       - istio-system/istiod
     atomic: false
+    wait: false
 
   - name: kserve
     namespace: kserve

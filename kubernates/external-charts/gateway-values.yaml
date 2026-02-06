@@ -1,15 +1,29 @@
-labels:
-  istio: ingressgateway
-  app: istio-ingressgateway
+# labels:
+#   istio: ingressgateway
+#   app: istio-ingressgateway
+
+# service:
+#   type: NodePort
+
+# autoscaleEnabled: true
+# autoscaleMin: 1
+# autoscaleMax: 3
 
 service:
-  type: LoadBalancer
-
-autoscaleEnabled: true
-autoscaleMin: 1
-autoscaleMax: 3
-
-
+  type: NodePort
+  ports:
+    - name: status-port
+      port: 15021
+      targetPort: 15021
+      nodePort: 31521
+    - name: http2
+      port: 80
+      targetPort: 8080
+      nodePort: 30080
+    - name: https
+      port: 443
+      targetPort: 8443
+      nodePort: 30443
 # gateways:
 #   istio-ingressgateway:
 #     labels:
