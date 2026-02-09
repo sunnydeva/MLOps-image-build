@@ -7,9 +7,9 @@ releases:
   - name: kserve-crd
     namespace: kserve
     createNamespace: true
-    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/kserve-crd-v0.13.0.tgz
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/crds/charts/kserve-crd-v0.13.0.tgz
 
   - name: kserve-controller
     namespace: kserve
     createNamespace: false
-    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/external-charts/charts/kserve-v0.13.0.tgz
+    chart: C:/Users/Admin/Documents/ML-OPS/kubernates/crds/charts/kserve-v0.13.0.tgz

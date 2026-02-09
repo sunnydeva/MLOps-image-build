@@ -28,12 +28,12 @@ dependencies:
 
   - name: kserve-crd
     version: 0.13.0
-    repository: "file://charts/kserve-crd-0.13.0.tgz"
+    repository: "file://charts/kserve-crd-v0.13.0.tgz"
     dependsOn:
       - istio-gateway
 
   - name: kserve-controller
     version: 0.13.0
-    repository: "file://charts/kserve-0.13.0.tgz"
+    repository: "file://charts/kserve-v0.13.0.tgz"
     dependsOn:
       - kserve-crd

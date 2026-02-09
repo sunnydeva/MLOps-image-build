@@ -41,6 +41,14 @@ helm pull ingress-nginx/ingress-nginx --version 4.10.0
 
 ################################
 
+TODO
+
+single namespace
+resource management
+pulling the crd images from private docker hub
+variablise 
+
+
 
 
 
